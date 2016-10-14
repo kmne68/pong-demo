@@ -5,6 +5,7 @@
  */
 package pongdemo;
 
+import java.awt.BorderLayout;
 import javax.swing.JApplet;
 
 /**
@@ -30,6 +31,11 @@ public class Main extends JApplet {
 
     @Override
     public void init() {
+        
+        setLayout(new BorderLayout());
+        
+        add(new Game(), BorderLayout.CENTER);
+        
         System.out.println("init");
     }
     
