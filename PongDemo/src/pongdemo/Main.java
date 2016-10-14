@@ -13,6 +13,11 @@ import javax.swing.JApplet;
  * @author kemery
  */
 public class Main extends JApplet {
+    
+  /*  public static void main(String[] args) {
+        
+        System.out.println("Hello pong!");
+    } */
 
     @Override
     public void destroy() {
