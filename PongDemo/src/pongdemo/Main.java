@@ -12,6 +12,26 @@ import javax.swing.JApplet;
  * @author kemery
  */
 public class Main extends JApplet {
+
+    @Override
+    public void destroy() {
+        System.out.println("destroy");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("stop");
+    }
+
+    @Override
+    public void start() {
+        System.out.println("start");
+    }
+
+    @Override
+    public void init() {
+        System.out.println("init");
+    }
     
     
 }
