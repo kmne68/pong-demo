@@ -37,6 +37,7 @@ public class Main extends JApplet {
     @Override
     public void init() {
         
+        setSize(600, 500);
         setLayout(new BorderLayout());
         
         add(new Game(), BorderLayout.CENTER);
