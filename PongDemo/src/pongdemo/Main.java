@@ -22,10 +22,10 @@ public class Main extends JApplet implements ActionListener {
         System.out.println("Hello pong!");
     } */
     
-    private Timer timer;
+    private Timer timer;    // could go in game class as that is where drawing takes place
     long startTime;
     long relativeTime;
-    
+    private Game game;
 
     @Override
     public void destroy() {
@@ -52,13 +52,15 @@ public class Main extends JApplet implements ActionListener {
     @Override
     public void init() {
         
-        timer = new Timer(1000, this);
+        game = new Game();
+        
+        timer = new Timer(20, this);
         timer.setInitialDelay(100);
         
         setSize(600, 500);
         setLayout(new BorderLayout());
         
-        add(new Game(), BorderLayout.CENTER);
+        add(game, BorderLayout.CENTER);
         
         System.out.println("init");
     }
@@ -66,6 +68,7 @@ public class Main extends JApplet implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        game.update();
         System.out.println("timer running");
     }
     
