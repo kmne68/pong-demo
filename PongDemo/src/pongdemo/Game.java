@@ -6,8 +6,10 @@
 package pongdemo;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -55,9 +57,13 @@ public class Game extends JComponent {
                 
                 ball.x = e.getX();
                 ball.y = e.getY();
-            }
-            
+            }            
         });
+        
+        
+        Cursor hiddenCursor = getToolkit().createCustomCursor(new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "");
+        setCursor(hiddenCursor);
+        
     }
 
     @Override
