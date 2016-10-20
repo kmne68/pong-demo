@@ -9,8 +9,11 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -32,6 +35,7 @@ public class Game extends JComponent {
     private double speed = 10.0;
     private int xDirectionBall = 1;
     private int yDirectionBall = 1;
+    private double batSpeed = 10;
     private BufferedImage buffer;
     
     public Game() {
@@ -58,6 +62,34 @@ public class Game extends JComponent {
                 ball.x = e.getX();
                 ball.y = e.getY();
             }            
+        });
+        
+        
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent e) {
+             
+                int key = e.getKeyCode();
+                
+                switch(key) {
+                    case KeyEvent.VK_UP:
+                        bat.y -= batSpeed;
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        bat.y += batSpeed;
+                        break;
+                    case KeyEvent.VK_LEFT:
+                        bat.x -= batSpeed;
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        bat.x += batSpeed;
+                        break;                        
+                }
+                
+                return false;
+            }            
+            
         });
         
         
