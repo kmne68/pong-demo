@@ -13,6 +13,8 @@ import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.RenderingHints;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -92,6 +94,13 @@ public class Game extends JComponent {
             
         });
         
+        addComponentListener(new ComponentAdapter() {
+           
+            public void componentResized(ComponentEvent e) {
+                buffer = null;
+            }
+            
+        });
         
         Cursor hiddenCursor = getToolkit().createCustomCursor(new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "");
         setCursor(hiddenCursor);
