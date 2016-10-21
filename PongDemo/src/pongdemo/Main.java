@@ -26,6 +26,7 @@ public class Main extends JApplet implements ActionListener {
     long startTime;
     long relativeTime;
     private Game game;
+    private StartPanel startPanel;
 
     @Override
     public void destroy() {
@@ -52,7 +53,19 @@ public class Main extends JApplet implements ActionListener {
     @Override
     public void init() {
         
+        startPanel = new StartPanel();
         game = new Game();
+        
+        startPanel.setListener(new StartPanelListener() {
+
+            @Override
+            public void startGame() {
+                
+                System.out.println("hello there");
+            }
+            
+            
+        });
         
         timer = new Timer(20, this);
         timer.setInitialDelay(100);
@@ -60,7 +73,7 @@ public class Main extends JApplet implements ActionListener {
         setSize(600, 500);
         setLayout(new BorderLayout());
         
-        add(game, BorderLayout.CENTER);
+        add(startPanel, BorderLayout.CENTER);
         
         System.out.println("init");
     }
@@ -69,7 +82,6 @@ public class Main extends JApplet implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         game.update();
-        System.out.println("timer running");
     }
     
     
