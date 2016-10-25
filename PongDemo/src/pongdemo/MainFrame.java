@@ -8,8 +8,12 @@ package pongdemo;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.Timer;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -29,7 +33,13 @@ public class MainFrame extends JFrame implements ActionListener {
         
         super("Animation Demo");
         
-cards = new CardLayout();
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.metal.MotifLookAndFeel");
+        } catch (Exception ex) {
+            System.out.println("Cannot set look and feel.");
+        }
+        
+        cards = new CardLayout();
         startPanel = new StartPanel();
         game = new Game();
         
