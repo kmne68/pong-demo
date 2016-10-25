@@ -39,6 +39,7 @@ public class Game extends JComponent {
     private int yDirectionBall = 1;
     private double batSpeed = 10;
     private BufferedImage buffer;
+    private boolean checkIntersection = true;
     
     public Game() {
         addMouseMotionListener(new MouseMotionListener() {
@@ -155,7 +156,22 @@ public class Game extends JComponent {
             ball.y = getHeight() - ball.getBounds().height;
         }
         
+        
+        if(ball.intersects(bat.getBounds())) {
+            if(checkIntersection) {
+                
+                xDirectionBall = -xDirectionBall;
+                yDirectionBall = -yDirectionBall;  
+                checkIntersection = false;
+            }
+            else {
+                checkIntersection = true;
+            }
+        
+        }
+        
         repaint(); // saves time vs calling paintComponent
+
     }
 
     @Override
