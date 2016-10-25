@@ -6,6 +6,7 @@
 package pongdemo;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JApplet;
@@ -27,6 +28,7 @@ public class Main extends JApplet implements ActionListener {
     long relativeTime;
     private Game game;
     private StartPanel startPanel;
+    private CardLayout cards;
 
     @Override
     public void destroy() {
@@ -53,27 +55,25 @@ public class Main extends JApplet implements ActionListener {
     @Override
     public void init() {
         
+        cards = new CardLayout();
         startPanel = new StartPanel();
         game = new Game();
         
         startPanel.setListener(new StartPanelListener() {
-
-            @Override
+            
             public void startGame() {
-                
-                System.out.println("hello there");
-            }
-            
-            
+                cards.show(Main.this.getContentPane(), "game");
+            }            
         });
         
         timer = new Timer(20, this);
         timer.setInitialDelay(100);
         
         setSize(600, 500);
-        setLayout(new BorderLayout());
+        setLayout(cards);
         
-        add(startPanel, BorderLayout.CENTER);
+        add(startPanel, "start");
+        add(game, "game");
         
         System.out.println("init");
     }
