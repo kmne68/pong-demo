@@ -15,8 +15,8 @@ public class App {
     
     public static void main(String[] args) {
         
-        SwingUtilities.invokeLater(()->{ new MainFrame(); });
-        /* Traditional method
+        //SwingUtilities.invokeLater(()->{ new MainFrame(); });
+        // Traditional method
         SwingUtilities.invokeLater(new Runnable() {
             
             public void run() {
@@ -26,7 +26,7 @@ public class App {
         
         });
         
-        */ 
+         
     }
     
 }
